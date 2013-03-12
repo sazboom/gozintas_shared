@@ -32,7 +32,7 @@ function moreStuff(router, onReady){
 				}else{
 					$(that).trigger('pagebeforeload');
 				}
-				loadPageJS(that)
+				initPageJS(that)
 			}
 		});
 	  });
@@ -48,11 +48,32 @@ function loadPartials(router, onReady){
 	});
 }
 
-function loadPageJS(selector){
+function initPageJS(selector){
 	page = $(selector).data('pagejs')
 	if(page){
-		Page.js[page]()
+		console.log('Initializing JS for '+page+'..');
+		Page.js[page]['init']()
+		console.log('Done.');
 	}
+}
+
+function loadPageJS(e,ui){
+	currentPage = $(e.target).attr('data-url')
+	prevPage = $(ui.prevPage[0]).attr('id')
+	if(currentPage){
+		console.log('Loading JS for '+currentPage+'..');
+		Page.js[currentPage]['load']()
+		console.log('Done.');
+	}
+	if(prevPage){
+		console.log('Unloading JS for '+prevPage+'..');
+		unloadPageJS(prevPage)
+		console.log('Done.');
+	}
+}
+
+function unloadPageJS(page){
+	Page.js[page]['unload']()
 }
 
 

@@ -21,31 +21,27 @@ var app = {
 
 };
 
-function addGroup()
-{
-    group_size = $("#page2 [id^='group-']").size();
-    new_group = new Group()
-    new_group.peopleInParty = 0;
-    groups.push(new_group)
-    $("<div id='topgroup-"+(group_size+1)+"-container' class='group-container'><div data-role='collapsible' data-content-theme='c' data-theme='a' id ='group-"+(group_size+1)+"' class='group-"+(group_size+1)+" visible' data-routing='group.html' style = 'width: 77%; float: left'><h3>Group "+(group_size+1)+"</h3></div><a href='#' data-transition='pop' data-role='button' data-inline='true' style='float: left; width: 20%;' data-icon='gear' data-theme='b' data-rel='popup' onclick='$(&quot;#extra-popup-"+(group_size+1)+"&quot;).popup(&quot;open&quot;)'></a><div data-role='popup' class='extra-popup' id='extra-popup-"+(group_size+1)+"' data-routing='extras.html'></div></div>").appendTo('.groups');
-    $("<div data-content-theme='c' data-theme='a' id ='group-"+(group_size+1)+"' class='group-"+(group_size+1)+" visible' data-routing='total.html'><h3>Group "+(group_size+1)+"</h3></div>").appendTo('.groups-final');
-    loadPartials("#group-"+(group_size+1)+"[data-routing]", false);
-    loadPartials("#extra-popup-"+(group_size+1)+"[data-routing]", false);
+function addGroup(){
+	id = Gozintas.addGroup();
+	addGroupElement(id);
 }
+
+function addGroupElement(id)
+{
+    $("<div id='topgroup-"+(id)+"-container' class='group-container'><div data-role='collapsible' data-content-theme='c' data-theme='a' id ='group-"+(id)+"' class='group-"+(id)+" visible' data-routing='group.html' style = 'width: 77%; float: left'><h3>Group "+(id)+"</h3></div><a href='#' data-transition='pop' data-role='button' data-inline='true' style='float: left; width: 20%;' data-icon='gear' data-theme='b' data-rel='popup' onclick='$(&quot;#extra-popup-"+(id)+"&quot;).popup(&quot;open&quot;)'></a><div data-role='popup' class='extra-popup' id='extra-popup-"+(id)+"' data-routing='extras.html'></div></div>").appendTo('.groups');
+    loadPartials("#group-"+(id)+"[data-routing]", false);
+    loadPartials("#extra-popup-"+(id)+"[data-routing]", false);
+	}
 
 function removeGroup()
 {
-    group_size = $("#page2 [id^='group-']").size();
-    if(group_size !=1)
-    {
-        $("#group-"+group_size).parent().remove();
+    group_size = Gozintas.numOfGroups();
+	if(group_size > 1)
+    { 
+        $("#topgroup-"+group_size+"-container").remove();
         console.log("Popped!")
-        groups.pop(new Group())
+        Gozintas.removeGroup()
         
-    }
-    for(var i = groups.length; i > group_size; i--){
-        console.log("popping");
-        groups.pop(new Group());
     }
 }
 

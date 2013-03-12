@@ -17,9 +17,11 @@ function Group () {
 var groups = [new Group()]
 
 var Gozintas = {
+	groups : [new Group(), new Group()],
 	numGroups : 0,
 	billPath : 'split-bill',
 	splitBy : 'individual',
+	loadedPage : null,
 	peopleInParty : 0,
 	billModifier : { /* If any of the groups have wine, reductions, or extras, these will be set to true. If none of them have wine, reductions, or extras, these will be set to false. Also defined on a per group basis above in the groups variable*/
 		wine : false,
@@ -29,7 +31,11 @@ var Gozintas = {
 	total : {       /* Used to store the tax and amount from page two, and calculate the "reduced" price to divide by the group, taking into account reductions */
 		withoutReduction : 0,
 		taxAmount : 0,
-		amount : 0
+		amount : 0,
+		test : 0,
+		hasValue: function(){
+			return ( (Gozintas.total.taxAmount > Gozintas.total.amount) || (Gozintas.total.amount ==0 ) || Gozintas.total.amount < 0 || Gozintas.total.taxAmount < 0)
+		}
 	},
 	individual : {  /* Defines the amount per individual that should be paid in a party*/
 		total : 0.00, /*total amount per individual*/
@@ -334,6 +340,9 @@ var Gozintas = {
 			Gozintas.billModifier.wine = true
 		}
 	},
+	formatStringToCurrency: function(str){
+		return parseFloat(parseFloat(str).toFixed(2))
+	},
 	handleKeyups: function(page){
 		if(page == 3){
 			var three_classes = [{id: "#group_nickname", input:"text", attribute:"nickname"},{id:"#people_in_group", input:"integer", attribute:"peopleInParty"},{id:"#drinks_deserts_etc",input:"money", attribute:"foodTotal", bool:"extras"},{id:"#wine_amount",input:"money", attribute:"wineTotal", bool:"wine"},{id:"#carry_out_amount",input:"money", attribute:"carryOutTotal", bool:"carryout"},{id:"#fair_reduction",input:"money", attribute:"reductionTotal", reduction:"reductions"}]
@@ -399,6 +408,24 @@ var Gozintas = {
 	        	});
 			});
 		}
+	},
+	numOfGroups : function(){
+		return this.groups.length
+	},
+
+	addGroup : function() {
+		this.groups.push(new Group())
+		return this.numOfGroups();
+	},
+	
+	removeGroup : function() {
+		if(this.numOfGroups() > 0){
+			this.groups.pop()
+		}
+	},
+
+	clearGroups : function(){
+		this.groups = []
 	},
 
 	clearEntry:  function(){
