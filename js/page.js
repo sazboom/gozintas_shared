@@ -9,11 +9,13 @@ var Page = {
 				tipRate = ich.tipRate();
 				$('#main .tip_rate').append(tipRate);
 				$('#main .tip_rate').trigger('change');
-
+				console.log('Loading Main Page');
 				Page.js.main.load();
+				console.log('Main Page Loaded');
 
 			},
 		load: function() {
+				console.log('Loading....');
 				//Format data entered as a string into Currency
 				$("#main #total_amount_input").on("change keyup", function() {
 					Gozintas.total.amount = Gozintas.formatStringToCurrency($(this).val())
