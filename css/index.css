@@ -324,6 +324,20 @@
   border-right: 1px solid gray;
 }
 
-.tip-links .tip-link:first-child {
+
+.base-tip, .tax-tip {
+  float: left;
+  width: 50%;
+}
+
+.tax-tip {
+  padding-left: 10px;
+}
+
+.base-tip {
   border-right: 1px solid gray;
+}
+
+.smallFont {
+  font-size: 12px;
 }

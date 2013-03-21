@@ -28,22 +28,12 @@ function addGroup(){
 
 function addGroupElement(id)
 {
-    $(  "<div id='topgroup-"+(id)+"-container' class='group-container'>" +
-			"<div data-role='collapsible' data-content-theme='c' data-theme='a'" +
-			"id ='group-"+(id)+"' class='group-"+(id)+" visible' data-routing='group.html'" +
-			"style = 'width: 77%; float: left'>"+
-				"<h3>Group "+(id)+"</h3>"+
-			"</div>"+
-			"<a href='#' data-transition='pop' data-role='button' data-inline='true'"+
-			"style='float: left; width: 20%;' data-icon='plus' data-theme='b'"+
-			"data-rel='popup' onclick='$(&quot;#extra-popup-"+(id)+"&quot;).popup(&quot;open&quot;)'>"+
-			"</a>"+
-			"<div data-role='popup' class='extra-popup' id='extra-popup-"+(id)+"' data-routing='extras.html' data-group-id='"+(id)+"'>"+
-			"</div>"+
-		"</div>"
-	).appendTo('.groups');
-    loadPartials("#group-"+(id)+"[data-routing]", false);
-    loadPartials("#extra-popup-"+(id)+"[data-routing]", false);
+    $(ich.groupTopContainer({id:id})).appendTo('.groups');
+    group = ich.groupContainer();
+	$("#group-"+(id)).append(group);
+	popup = ich.groupPopup();
+	$("#extra-popup-"+(id)).append(popup);
+	$("#topgroup-"+(id)+"-container").trigger('create');
 }
 
 function clearGroupElements()
@@ -72,7 +62,7 @@ function addExtra()
 
 function returnHome(changepage){
     Gozintas.reset();
-    Gozintas.showSplitTipButtons();
+    Gozintas.toggleMainButtons();
     $(':input').val('');
     if(changepage){
         $.mobile.changePage("#main")
@@ -82,5 +72,5 @@ function returnHome(changepage){
 function turnPage(loc){
 	setTimeout(function(){
 		document.location = loc;
-	},1000);
+	},500);
 }	
