@@ -138,20 +138,7 @@
                 </span>
                 </a>
             </div>
-            <!--<div class = "tabs-top">
-                <div class="split-bill">
-                    <a href="#split-bill">
-                        <div class="paper-icon"></div>
-                        <div class="text-tab">Split Bill</div>
-                    </a>
-                </div>
-                <div class="determine-tip">
-                    <a href="#determine-tip">
-                        <div class="percent-icon"></div>
-                        <div class="text-tab">Determine Tip</div>
-                    </a>
-                </div>
-            </div>-->
+
             <div class = "background-page">
                 <div class = "inner-page">
                     <div class ="menu">
@@ -183,20 +170,7 @@
               </span>
             </a>
           </div>
-          <!--<div class = "tabs-top">
-            <div class="split-bill">
-              <a href="#split-bill">
-                <div class="paper-icon"></div>
-                <div class="text-tab">Split Bill</div>
-              </a>
-            </div>
-            <div class="determine-tip">
-              <a href="#determine-tip">
-                <div class="percent-icon"></div>
-                <div class="text-tab">Determine Tip</div>
-              </a>
-            </div>
-          </div>-->
+
           <div class = "background-page">
             <div class = "inner-page">
               <h3><center>To divide the bill evenly, enter the total number of people in your party</center></h3>
@@ -330,35 +304,7 @@
               <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out</label>
             </div>  
           </div>
-          <!-- <div data-role="header">
-            <h1>Gozintas</h1>
-            <a class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-right ui-btn-up-a" data-icon="gear" href="#settings" data-theme="a" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
-              <span class="ui-btn-inner ui-btn-corner-all">
-                <span class="ui-btn-text">Settings</span>
-                <span class="ui-icon ui-icon-gear ui-icon-shadow"> </span>
-              </span>
-            </a>
-          </div>
-          <div class = "background-page">
-            <div class = "inner-page">
-              <div class = "question_input">
-                You're ordering extras on your bill. Extras can be things like carry-out food, or drinks, that might have tip rates that differ from normal<br>
-                <a href="#" data-role="button" onclick="addExtra()" data-inline="true" data-icon="plus">Add Extra</a>
-                <a href="#" data-role="button" onclick="removeExtra()" data-inline="true" data-icon="minus">Remove Extra</a>
-                <br>
-                <input class = "input_text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:10%; display:inline;">
-                <label for="wine_amount" class="label_gaz wine_rate">Wine Total (alternative tip rate)</label>
-              </div>
-              <div class = "question_input">
-                <input class = "input_text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:10%; display:inline;">
-                <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out Total (0% tip rate)</label>
-              </div>
 
-              <div class="buttons">
-                <a href="#tip" data-role="button">Next</a>
-              </div>
-            </div>
-          </div> -->  
         </div>
 
         <div data-role="page" id="settings" data-add-back-btn="true" data-routing="settings.html" data-pagejs="settings" class="page-bg">
@@ -394,16 +340,11 @@
 
         <script id="groupContainer" type="text/html">
             <div class = "question_input">
-                Group Nickname:  <input class="group_nickname" id="group_nickname" type="text" name="group_nickname" style="width:48%; display:inline;">
+              Group Nickname:  <input class="group-nickname" id="group-nickname-{{id}}" data-group-id="{{id}}" type="text" name="group_nickname" style="width:48%; display:inline;">
             </div>
             <div class = "question_input">
-                 To divide the bill by groups, enter the following information about your group and all other groups. Press “next” to toggle to the next group (then enter new initials). Press next twice to bring up the next screen.
-            </div>
-            <br/>
-            <div class = "question_input">
-                In this group there were 
-                <input class="input_text" id="people_in_group" type="text"  pattern="[0-9]*" name="people_in_group" style="width:25%; display:inline;">
-                people
+              <input class="people-in-group" id="people-in-group-{{id}}" type="text" data-group-id="{{id}}" pattern="[0-9]*" name="people_in_group" style="width:25%; display:inline;">
+                people in this group.
             </div>
         </script>
         <script id="user" type="text/html">
@@ -557,16 +498,28 @@
                           <label class = "input_text_label" for="total_bill">Total Per Person</label>
                           <span id="tip_total">{{totalToPaySplitEvenly}}</span>
                       </div>
-                    </div>
+                  </div>
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
                           <label class = "input_text_label" for="total_bill">Tip Pay Person</label>
                           <span id="tip_total">{{totalTipSplitEvenly}}</span>
                       </div>
                   </div>
-
+              </div>
             </script>
 
+            <script id="receiptGroupSplit" type="text/html">
+              <div class = "inner-page">
+                  <div class = "page5 group-name">
+                    <strong>Group {{nickname}}</strong>
+                  </div>
+                </div>
+
+                <div div class = "page5 individuals-in-party">
+                    People In Group <span class="receipt-people-in-group">{{peopleInGroup}}</span>
+                </div>
+
+            </script>
 
             <script id="receiptGroup" type="text/html">
                 <div data-role="header" class="header-home">

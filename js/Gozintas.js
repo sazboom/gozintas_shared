@@ -4,7 +4,7 @@ function Group () {
     this.extras = false
     this.carryout = false
     this.nickname = ''
-    this.peopleInParty = 0
+    this.peopleInGroup = 0
     this.foodTotal = 0
     this.wineTotal = 0
     this.carryOutTotal = 0
@@ -17,7 +17,7 @@ function Group () {
 var groups = [new Group()]
 
 var Gozintas = {
-	groups : [new Group(), new Group()],
+	groups : [],
 	numPeopleToSplitBillBetween: 0,
 	billPath: 'split-bill',
 	peopleInParty : 1,
@@ -33,7 +33,7 @@ var Gozintas = {
 			baseTipRate: this.formatDecmialToPercent(this.tip.base),
 			taxTipeRate: this.formatDecmialToPercent(this.tip.tax),
 			totalToPay: this.formatFloatIntoCurrency(this.calculateTotalToPay()),
-			peopleInParty: this.peopleInParty,
+			peopleInParty: this.calculateTotalPeople(),
 			totalTipSplitEvenly: this.formatFloatIntoCurrency(this.calculateTotalTipSplitEvenly()),
 			totalToPaySplitEvenly: this.formatFloatIntoCurrency(this.calculateTotalToPaySplitEvenly()),
 
@@ -64,6 +64,24 @@ var Gozintas = {
 		wine : 0,     /*percent, used for wine tip*/
 		carryout : 0, /*percent, used for carryout tip*/
 		tax : 0.15       /*percent, used for tax tip*/
+	},
+
+
+//Calculations
+//
+//
+	calculateTotalPeople: function(){
+		if(this.groups == []){
+			return this.peopleInParty
+		}
+		else
+		{
+			people = 0;
+			this.groups.forEach(function(elem, index, array){
+				people += elem.peopleInGroup;
+			});
+			return people
+		}
 	},
 	calculateBaseTip: function(){
 		return (this.total.billAmount() * this.tip.base)
@@ -119,6 +137,8 @@ var Gozintas = {
 
 
 
+//Paths
+//
 
 
 	splitBillPath : function() {
@@ -167,9 +187,15 @@ var Gozintas = {
 //Boolean
 //
 
-	isSplitEvenly: function(){
-		return (this.isOnSplitBillPath() && this.peopleInParty > 1)
+
+	isGroupSplit : function(){
+		return (this.isOnSplitBillPath() && this.groups != [])
 	},
+
+	isSplitEvenly : function(){
+		return !this.isGroupSplit()
+	},
+
 
 
 

@@ -107,7 +107,18 @@ var Page = {
 						addGroupElement(i);
 					}
 				});
-
+				
+				$("#container").on("change", ".group-container .group-nickname", function(){
+					groupId = parseInt($(this).attr('data-group-id'));
+					group = Gozintas.groups[groupId-1];
+					group.nickname = $(this).val();
+				});
+				$("#container").on("change", ".group-container .people-in-group", function(){
+					groupId = parseInt($(this).attr('data-group-id'));
+					group = Gozintas.groups[groupId-1];
+					peopleInGroup = parseInt($(this).val());
+					group.peopleInGroup = peopleInGroup;
+				})
 
 				// Load Food Extra value into the group from the form field
 				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#drinks_deserts_etc', function(){
@@ -201,6 +212,11 @@ var Page = {
 					if(Gozintas.isSplitEvenly()){
 						Page.js.receiptSplitEvenly.load();
 					}
+					else if(Gozintas.isGroupSplit()){
+						Gozintas.groups.forEach(function(group,index,array){
+							Page.js.receiptGroupSplit.load(group);
+						});
+					}
 					Page.js.receipt.load();
 					turnPage('#receipt');
 				});
@@ -246,6 +262,20 @@ var Page = {
 			unload: function(){
 			},
 		},
+
+		receiptGroupSplit: {
+			init: function() {
+			},
+			load: function(group) {
+				receiptHTML = ich.receiptGroupSplit(group)
+				$('#receipt .receipt').append(receiptHTML);
+			},
+
+			unload: function(){
+			},
+		},
+
+
 
 
 		receiptb: {

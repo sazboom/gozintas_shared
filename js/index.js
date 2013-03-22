@@ -29,7 +29,7 @@ function addGroup(){
 function addGroupElement(id)
 {
     $(ich.groupTopContainer({id:id})).appendTo('.groups');
-    group = ich.groupContainer();
+    group = ich.groupContainer({id:id});
 	$("#group-"+(id)).append(group);
 	popup = ich.groupPopup();
 	$("#extra-popup-"+(id)).append(popup);
