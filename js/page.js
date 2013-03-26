@@ -7,8 +7,8 @@ var Page = {
 			init: function() {
 				
 				tipRate = ich.tipRate();
-				$('#main .tip_rate').append(tipRate);
-				$('#main .tip_rate').trigger('change');
+				$('#main .tip-rate-class').append(tipRate);
+				$('#main .tip-rate-class').trigger('change');
 				console.log('Loading Main Page');
 				Page.js.main.load();
 				console.log('Main Page Loaded');
@@ -17,13 +17,13 @@ var Page = {
 		load: function() {
 				console.log('Loading....');
 				//Format data entered as a string into Currency
-				$("#main #total_amount_input").on("change keyup", function() {
+				$("#main #total-amount-input").on("change keyup", function() {
 					Gozintas.total.amount = Gozintas.formatStringToCurrency($(this).val())
 				})
 
 				
 				//Format data entered as a string into Currency
-				$("#main #total_tax_amount_input").on("change keyup", function() {
+				$("#main #total-tax-amount-input").on("change keyup", function() {
 					Gozintas.total.taxAmount = Gozintas.formatStringToCurrency($(this).val())
 				})
 
@@ -35,8 +35,8 @@ var Page = {
 				//Add a number of groups coorisponding to dropdown.  
 				//NOTE: This is a distructive selection.  Might need to 
 				//improve this to be more friendly
-				$("#main #group_num").on('change', function(){
-					numWantedGroups = parseInt($("#main #group_num").val());
+				$("#main #group-num").on('change', function(){
+					numWantedGroups = parseInt($("#main #group-num").val());
 					Gozintas.clearGroups()
 					for(var i = 0; i < numWantedGroups; i++){
 						Gozintas.addGroup();
@@ -46,8 +46,8 @@ var Page = {
 				});
 
 				//Select the number of people to split the bill evenly between
-				$("#main #people_num").on('change', function(){
-					numOfPeople = parseInt($("#main #people_num").val());
+				$("#main #people-num").on('change', function(){
+					numOfPeople = parseInt($("#main #people-num").val());
 					Gozintas.peopleInParty = numOfPeople
 
 					turnPage('#tip');
@@ -55,8 +55,8 @@ var Page = {
 				});
 
 
-				$("#main #tip_rate").on('change', function(){
-					tipRate = parseFloat($("#main #tip_rate").val());
+				$("#main #tip-rate").on('change', function(){
+					tipRate = parseFloat($("#main #tip-rate").val());
 					Gozintas.tip.base = tipRate
 					Page.js.receipt.unload();
 					Page.js.receiptIndividual.load();
@@ -64,8 +64,8 @@ var Page = {
 					turnPage('#receipt');
 				});
 
-				$("#main #group_num").on('change', function(){
-					numWantedGroups = parseInt($("#main #group_num").val());
+				$("#main #group-num").on('change', function(){
+					numWantedGroups = parseInt($("#main #group-num").val());
 					Gozintas.clearGroups()
 					for(var i = 0; i < numWantedGroups; i++){
 						Gozintas.addGroup();
@@ -185,7 +185,7 @@ var Page = {
 			init: function() {
 
 				tipRate = ich.tipRate();
-				$('#tip .tip_rate').append(tipRate);
+				$('#tip .tip-rate-class').append(tipRate);
 				$('#tip .tax_tip_rate').append(tipRate);
 				$('#tip').trigger('change');
 
@@ -197,8 +197,8 @@ var Page = {
 			},
 			load: function() {
 
-				$("#tip #tip_rate").on('change', function(){
-					tipRate = parseFloat($("#tip #tip_rate").val());
+				$("#tip #tip-rate").on('change', function(){
+					tipRate = parseFloat($("#tip #tip-rate").val());
 					Gozintas.tip.base = tipRate
 				});
 				$("#tip #tax_tip_rate").on('change', function(){

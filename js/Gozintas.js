@@ -162,9 +162,8 @@ var Gozintas = {
         new_group.peopleInParty = 1;
         groups[0] = new_group;
 	},
-	splitByGroup : function(group_num) {
+	splitByGroup : function() {
 		this.splitBy = 'group'
-		this.group_num = group_num
 	},
 	isSplitingByIndividual : function(){
 		return this.splitBy == 'individual'

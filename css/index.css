@@ -1,4 +1,4 @@
-.select_gaz{
+.select-gaz{
     display: inline-block !important;
     width: 50px;
 }
@@ -7,7 +7,7 @@
 	color: #FFF;
 }
 
-.div_select_gaz{
+.div-select-gaz{
     display: inline-block !important;
 }
 .label_gaz{
@@ -111,7 +111,7 @@
     margin:0;
 }
 
-#number_of_groups .ui-btn-inline {
+#number-of-groups .ui-btn-inline {
 	width: 100%;
 }
 
@@ -237,13 +237,13 @@
 	font-size: 20px;
 }
 
-.page5 .input_text_label {
+.page5 .input-text-label {
 	display: inline-block;
 	width: 70%;
 
 }
 
-.page5.bill-top .input_text_label {
+.page5.bill-top .input-text-label {
 	display: inline-block;
 	width: 70%;
 }
@@ -299,7 +299,7 @@
 	font-size: 16px;
 }
 
-.question_input.total_tax_amount_input, .question_input.total_amount_input{
+.question-input.total-tax-amount-input-group, .question-input.total-amount-input-group{
 	height: 80px;
 }
 

@@ -54,22 +54,22 @@
             <div class = "inner-page">
               <h3 class="toptext"><center>Please enter the receipt details below</center></h3>
               <div class="menu">
-                <div class = "question_input total_amount_input">
-                  <label class = "input_text_label" for="total_amount">Bill Total?</label>
-                  <input class = "input_text" id="total_amount_input" type="number" step = "0.01" name="total_amount" placeholder="0.00" min="0.00"><br>
+                <div class = "question-input total-amount-input-group">
+                  <label class = "input-text-label" for="total-amount">Bill Total?</label>
+                  <input class = "input-text" id="total-amount-input" type="number" step = "0.01" name="total-amount" placeholder="0.00" min="0.00"><br>
                 </div>
-                <div class = "question_input total_tax_amount_input">
-                  <label class = "input_text_label" for="tax_amount">Tax from Bill Total? (optional)</label><br>
-                  <input class = "input_text" id="total_tax_amount_input" type="number" step = "0.01" name="tax_amount" placeholder="0.00" min="0.00">
+                <div class = "question-input total-tax-amount-input-group">
+                  <label class = "input-text-label" for="tax-amount">Tax from Bill Total? (optional)</label><br>
+                  <input class = "input-text" id="total-tax-amount-input" type="number" step = "0.01" name="tax-amount" placeholder="0.00" min="0.00">
                 </div>
                 <div class="buttons">
                   <div class="split-links">
                     <div class="split-link">
                       <span>Split Evenly</span>
                       <br/>
-                      <div id = "number_of_people">
-                        <div class="div_select_people_num" style="width:100%;">
-                          <select class="select_people_num" id="people_num" name="people_num" data-inline="true" data-routing="people-num.html">
+                      <div id = "number-of-people">
+                        <div class="div-select-people-num" style="width:100%;">
+                          <select class="select-people-num" id="people-num" name="people-num" data-inline="true" data-routing="people-num.html">
                             <option value="2" selected="selected">People?</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -88,9 +88,9 @@
                       <span>Split into Groups</span>
                       <br/>
 
-                      <div id = "number_of_groups">
-                        <div class="div_select_group_num" style="width:100%;">
-                          <select class="select_group_num" id="group_num" name="group_num" data-inline="true" data-routing="group-num.html">
+                      <div id = "number-of-groups">
+                        <div class="div-select-group-num" style="width:100%;">
+                          <select class="select-group-num" id="group-num" name="group-num" data-inline="true" data-routing="group-num.html">
                             <option value="2" selected="selected">Groups?</option>
                             <option value="2">2 Groups</option>
                             <option value="3">3 Groups</option>
@@ -106,8 +106,8 @@
                   <div class='tip-links'>
                     <div class="tip-link">
                       <button id="flat-rate-tip">Flat 15%</button>
-                      <div class="div_select_gaz">
-                        <select class="select_gaz tip_rate" id="tip_rate" name="tip_rate" data-inline="true" data-routing="tip-rate.html">
+                      <div class="div-select-gaz">
+                        <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
 
                         </select> 
                       </div>
@@ -175,18 +175,18 @@
             <div class = "inner-page">
               <h3><center>To divide the bill evenly, enter the total number of people in your party</center></h3>
               <div class ="menu">
-                <div class = "question_input">
-                  <label class = "input_text_label" for="people_in_party">People in party</label> 
-                  <input class="input_text" id="people_in_party" type="text"  pattern="[0-9]*" name="people_in_party" >
+                <div class = "question-input">
+                  <label class = "input-text-label" for="people_in_party">People in party</label> 
+                  <input class="input-text" id="people_in_party" type="text"  pattern="[0-9]*" name="people_in_party" >
                 </div>
 
-                <div class = "question_input">
-                  <input class = "input_text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:25%; display:inline;" disabled="">
+                <div class = "question-input">
+                  <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:25%; display:inline;" disabled="">
                   <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Bill Total (food tip rate)</label>
                 </div>
 
                 <div class="extras-bubble-wrapper">
-                  <div class = "question_input extras-bubble">
+                  <div class = "question-input extras-bubble">
                     <p>Your bill will be split evenly among the people in your party with the base tip and tax tip rates applied.</p>
                   </div>
                 </div>
@@ -233,17 +233,17 @@
           <div class = "background-page">
             <div class = "inner-page">
               <div class = "base-tip">
-                <div class="div_select_gaz">
-                  <label for="tip_rate" class="label_gaz tip_rate">Base Rate Tip</label><br/>
-                  <select class="select_gaz tip_rate" id="tip_rate" name="tip_rate" data-inline="true" data-routing="tip-rate.html">
+                <div class="div-select-gaz">
+                  <label for="tip-rate" class="label_gaz tip-rate-class">Base Rate Tip</label><br/>
+                  <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
               </div>
 
               <div id="tax-tip"> <!-- hiding this for now -->
-                <div class="div_select_gaz">
-                  <label for="tax_tip_rate" class="label_gaz tip_rate">Tax Tip Rate (Optional)</label><br/>
-                  <select class="select_gaz tip_rate" id="tax_tip_rate" name="tax_tip_rate" data-inline="true" data-routing="tip-rate.html">
+                <div class="div-select-gaz">
+                  <label for="tax_tip_rate" class="label_gaz tip-rate-class">Tax Tip Rate (Optional)</label><br/>
+                  <select class="select-gaz tip-rate-class" id="tax_tip_rate" name="tax_tip_rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
               </div>
@@ -290,17 +290,17 @@
           <div data-role="content" style="padding:15px;" class="ui-corner-bottom">
             <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" onclick="Gozintas.clearEntry()" class="ui-btn-right close_button">Close</a>
             <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="check" data-iconpos="notext" class="ui-btn-left save_button">Save</a>
-            <div class = "question_input">
+            <div class = "question-input">
               The group ordered the following extras:<br>
-              <input class = "input_text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+              <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
               <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Drinks/Deserts/Etc (food tip rate)</label>
             </div>
-            <div class = "question_input">
-              <input class = "input_text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+            <div class = "question-input">
+              <input class = "input-text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
               <label for="wine_amount" class="label_gaz wine_rate">Wine (alternative tip rate)</label>
             </div>
-            <div class = "question_input">
-              <input class = "input_text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+            <div class = "question-input">
+              <input class = "input-text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
               <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out</label>
             </div>  
           </div>
@@ -318,12 +318,12 @@
             <div class = "inner-page">
               <h3><center>Settings</center></h3>
 
-              <div class = "question_input">
-                <div class="div_select_gaz">
-                  <select class="select_gaz tip_rate" id="tip_rate" name="tip_rate" data-inline="true" data-routing="tip-rate.html">
+              <div class = "question-input">
+                <div class="div-select-gaz">
+                  <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
-                <label for="tip_rate" class="label_gaz tip_rate">Default Base Rate Tip</label>
+                <label for="tip-rate" class="label_gaz tip-rate-class">Default Base Rate Tip</label>
               </div>
 
               <div class="buttons">
@@ -339,10 +339,10 @@
         </div>
 
         <script id="groupContainer" type="text/html">
-            <div class = "question_input">
+            <div class = "question-input">
               Group Nickname:  <input class="group-nickname" id="group-nickname-{{id}}" data-group-id="{{id}}" type="text" name="group_nickname" style="width:48%; display:inline;">
             </div>
-            <div class = "question_input">
+            <div class = "question-input">
               <input class="people-in-group" id="people-in-group-{{id}}" type="text" data-group-id="{{id}}" pattern="[0-9]*" name="people_in_group" style="width:25%; display:inline;">
                 people in this group.
             </div>
@@ -357,17 +357,17 @@
             <div data-role="content" style="padding:15px;" class="ui-corner-bottom">
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" onclick="Gozintas.clearEntry()" class="ui-btn-right close_button">Close</a>
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="check" data-iconpos="notext" class="ui-btn-left save_button">Save</a>
-                <div class = "question_input">
+                <div class = "question-input">
                     The group ordered the following extras:<br>
-                    <input class = "input_text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+                    <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
                     <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Drinks/Deserts/Etc (food tip rate)</label>
                 </div>
-                <div class = "question_input">
-                    <input class = "input_text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+                <div class = "question-input">
+                    <input class = "input-text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
                     <label for="wine_amount" class="label_gaz wine_rate">Wine (alternative tip rate)</label>
                 </div>
-                <div class = "question_input">
-                    <input class = "input_text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+                <div class = "question-input">
+                    <input class = "input-text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
                     <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out</label>
                 </div>  
               </div>
@@ -400,14 +400,14 @@
               <div class = "inner-page">
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
-                          <label class = "input_text_label" for="total_bill">Total Bill</label>
+                          <label class = "input-text-label" for="total_bill">Total Bill</label>
                           <span id="tip_total">{{billTotal}}</span>
                       </div>
                   </div>
 
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
-                          <label class = "input_text_label" for="total_tip">Total Tip @ {{baseTipRate}}</label>
+                          <label class = "input-text-label" for="total_tip">Total Tip @ {{baseTipRate}}</label>
                           <span id="tip_total">{{totalTip}} </span> <span class='smallFont'>
                       </div>
                     </div>
@@ -415,7 +415,7 @@
                 
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
-                          <label class = "input_text_label" for="total_tip">Total To Pay</label>
+                          <label class = "input-text-label" for="total_tip">Total To Pay</label>
                           <span id="tip_total">{{totalToPay}}</span>
                       </div>
                   </div>
@@ -428,59 +428,59 @@
                       </div>
 
                       <div class = "page5 food_total">
-                          <label class = "input_text_label" for="food_total">Bill total</label>
+                          <label class = "input-text-label" for="food_total">Bill total</label>
                           <span id="food_total"></span>
                       </div>
 
                       <div class = "page5 wine_total">
-                          <label class = "input_text_label" for="wine_total">Wine total</label>
+                          <label class = "input-text-label" for="wine_total">Wine total</label>
                           <span id="wine_total"></span>
                       </div>
 
                       <div class = "page5 carryout_total">
-                          <label class = "input_text_label" for="pre_tax_amount">Carryout total (0% tip rate)</label>
+                          <label class = "input-text-label" for="pre_tax_amount">Carryout total (0% tip rate)</label>
                           <span id="carryout_total"></span>
                       </div>
 
                       <div class = "page5 tax_total">
-                          <label class = "input_text_label" for="total_tip">Tax</label>
+                          <label class = "input-text-label" for="total_tip">Tax</label>
                           <span id="tax_total"></span>
                       </div>
 
                       <div class = "page5 determine_tip">
                           <div class = "page5 total_tip">
-                              <label class = "input_text_label" for="total_tip">Tip</label>
+                              <label class = "input-text-label" for="total_tip">Tip</label>
                               <span id="tip_total"></span>
                           </div>
 
                           <hr/>
 
                           <div class = "page5 total">
-                              <label class = "input_text_label" for="total">Total</label>
+                              <label class = "input-text-label" for="total">Total</label>
                               <span id="total_individual"></span>
                           </div>
                       </div>
 
                       <div class="ui-grid-a-bill">
                           <div class = "page5 total_tip">
-                              <label class = "input_text_label" for="total_tip">Tip individual</label>
+                              <label class = "input-text-label" for="total_tip">Tip individual</label>
                               <span id="tip_individual"></span>
                           </div>
 
                           <div class = "page5 total_tip">
-                              <label class = "input_text_label" for="total_tip">Tip total</label>
+                              <label class = "input-text-label" for="total_tip">Tip total</label>
                               <span id="tip_total"></span>
                           </div>
 
                           <div class = "page5 total_tip">
-                              <label class = "input_text_label" for="total_tip">Total Individual</label>
+                              <label class = "input-text-label" for="total_tip">Total Individual</label>
                               <span id="total_individual"></span>
                           </div>
 
                           <hr/>
 
                           <div class = "page5 total_tip">
-                              <label class = "input_text_label" for="total_tip">Total for party</label>
+                              <label class = "input-text-label" for="total_tip">Total for party</label>
                               <span id="total"></span>
                           </div>
                       </div>
@@ -495,13 +495,13 @@
 
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
-                          <label class = "input_text_label" for="total_bill">Total Per Person</label>
+                          <label class = "input-text-label" for="total_bill">Total Per Person</label>
                           <span id="tip_total">{{totalToPaySplitEvenly}}</span>
                       </div>
                   </div>
                   <div class = "page5 determine_tip bill-top">
                       <div class = "page5 total_tip">
-                          <label class = "input_text_label" for="total_bill">Tip Pay Person</label>
+                          <label class = "input-text-label" for="total_bill">Tip Pay Person</label>
                           <span id="tip_total">{{totalTipSplitEvenly}}</span>
                       </div>
                   </div>
