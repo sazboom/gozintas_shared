@@ -142,9 +142,9 @@
             <div class = "background-page">
                 <div class = "inner-page">
                     <div class ="menu">
-                        <div class = "add_remove_group">
-                            <a href="#" data-role="button" onclick="addGroup()" data-icon="plus" class="add_group" data-theme="b">Add Group</a>
-                            <a href="#" data-role="button" onclick="removeGroup()" data-icon="minus" class="remove_group" data-theme="b">Remove Group</a>
+                        <div class = "add-remove-group">
+                            <a href="#" data-role="button" onclick="addGroup()" data-icon="plus" class="add-group" data-theme="b">Add Group</a>
+                            <a href="#" data-role="button" onclick="removeGroup()" data-icon="minus" class="remove-group" data-theme="b">Remove Group</a>
                         </div>
                         <div class="groups">
                         </div>
@@ -176,13 +176,13 @@
               <h3><center>To divide the bill evenly, enter the total number of people in your party</center></h3>
               <div class ="menu">
                 <div class = "question-input">
-                  <label class = "input-text-label" for="people_in_party">People in party</label> 
-                  <input class="input-text" id="people_in_party" type="text"  pattern="[0-9]*" name="people_in_party" >
+                  <label class = "input-text-label" for="people-in-party">People in party</label> 
+                  <input class="input-text" id="people-in-party" type="text"  pattern="[0-9]*" name="people-in-party" >
                 </div>
 
                 <div class = "question-input">
-                  <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:25%; display:inline;" disabled="">
-                  <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Bill Total (food tip rate)</label>
+                  <input class = "input-text" id="drinks-deserts-etc" type="number" step = "0.01" name="drinks-deserts-etc" placeholder="0.00" min="0.00" style="width:25%; display:inline;" disabled="">
+                  <label for="drinks-deserts-etc" class="label-gaz drink-desert-tip-rate">Bill Total (food tip rate)</label>
                 </div>
 
                 <div class="extras-bubble-wrapper">
@@ -234,7 +234,7 @@
             <div class = "inner-page">
               <div class = "base-tip">
                 <div class="div-select-gaz">
-                  <label for="tip-rate" class="label_gaz tip-rate-class">Base Rate Tip</label><br/>
+                  <label for="tip-rate" class="label-gaz tip-rate-class">Base Rate Tip</label><br/>
                   <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
@@ -242,13 +242,13 @@
 
               <div id="tax-tip"> <!-- hiding this for now -->
                 <div class="div-select-gaz">
-                  <label for="tax_tip_rate" class="label_gaz tip-rate-class">Tax Tip Rate (Optional)</label><br/>
-                  <select class="select-gaz tip-rate-class" id="tax_tip_rate" name="tax_tip_rate" data-inline="true" data-routing="tip-rate.html">
+                  <label for="tax-tip-rate" class="label-gaz tip-rate-class">Tax Tip Rate (Optional)</label><br/>
+                  <select class="select-gaz tip-rate-class" id="tax-tip-rate" name="tax-tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
               </div>
 
-              <a href="#" id ="next_button_tip" data-role="button">Next</a>
+              <a href="#" id ="next-button-tip" data-role="button">Next</a>
             </div>
           </div>
 
@@ -292,16 +292,16 @@
             <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="check" data-iconpos="notext" class="ui-btn-left save_button">Save</a>
             <div class = "question-input">
               The group ordered the following extras:<br>
-              <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-              <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Drinks/Deserts/Etc (food tip rate)</label>
+              <input class = "input-text" id="drinks-deserts-etc" type="number" step = "0.01" name="drinks-deserts-etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+              <label for="drink_deserts_etc" class="label-gaz drink-desert-tip-rate">Drinks/Deserts/Etc (food tip rate)</label>
             </div>
             <div class = "question-input">
               <input class = "input-text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-              <label for="wine_amount" class="label_gaz wine_rate">Wine (alternative tip rate)</label>
+              <label for="wine_amount" class="label-gaz wine_rate">Wine (alternative tip rate)</label>
             </div>
             <div class = "question-input">
               <input class = "input-text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-              <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out</label>
+              <label for="carry_out_amount" class="label-gaz takeout_rate">Carry-out</label>
             </div>  
           </div>
 
@@ -323,7 +323,7 @@
                   <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
-                <label for="tip-rate" class="label_gaz tip-rate-class">Default Base Rate Tip</label>
+                <label for="tip-rate" class="label-gaz tip-rate-class">Default Base Rate Tip</label>
               </div>
 
               <div class="buttons">
@@ -359,16 +359,16 @@
                 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="check" data-iconpos="notext" class="ui-btn-left save_button">Save</a>
                 <div class = "question-input">
                     The group ordered the following extras:<br>
-                    <input class = "input-text" id="drinks_deserts_etc" type="number" step = "0.01" name="drinks_deserts_etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-                    <label for="drink_deserts_etc" class="label_gaz drink_desert_tip_rate">Drinks/Deserts/Etc (food tip rate)</label>
+                    <input class = "input-text" id="drinks-deserts-etc" type="number" step = "0.01" name="drinks-deserts-etc" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
+                    <label for="drink_deserts_etc" class="label-gaz drink-desert-tip-rate">Drinks/Deserts/Etc (food tip rate)</label>
                 </div>
                 <div class = "question-input">
                     <input class = "input-text" id="wine_amount" type="number" step = "0.01" name="wine_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-                    <label for="wine_amount" class="label_gaz wine_rate">Wine (alternative tip rate)</label>
+                    <label for="wine_amount" class="label-gaz wine_rate">Wine (alternative tip rate)</label>
                 </div>
                 <div class = "question-input">
                     <input class = "input-text" id="carry_out_amount" type="number" step = "0.01" name="carry_out_amount" placeholder="0.00" min="0.00" style="width:50%; display:inline;">
-                    <label for="carry_out_amount" class="label_gaz takeout_rate">Carry-out</label>
+                    <label for="carry_out_amount" class="label-gaz takeout_rate">Carry-out</label>
                 </div>  
               </div>
           </script>

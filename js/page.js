@@ -121,7 +121,7 @@ var Page = {
 				})
 
 				// Load Food Extra value into the group from the form field
-				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#drinks_deserts_etc', function(){
+				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#drinks-deserts-etc', function(){
 				  groupId = parseInt($(this).parents('.extra-popup').attr('data-group-id'));
 				  group = Gozintas.groups[groupId-1];
 				  group.foodTotal = Gozintas.formatStringToCurrency($(this).val())
@@ -158,10 +158,10 @@ var Page = {
 				$("#groupsb").on('pageshow',function(){
 					
 					//Bill Amount
-					$("#groupsb #drinks_deserts_etc").val(Gozintas.total.billAmount());
+					$("#groupsb #drinks-deserts-etc").val(Gozintas.total.billAmount());
 					
 					//Set people in Party
-					$("#groupsb #people_in_party").focusout(function() {
+					$("#groupsb #people-in-party").focusout(function() {
 						Gozintas.numPeopleToSplitBillBetween = parseInt($(this).val());
 					});
 				});
@@ -201,12 +201,12 @@ var Page = {
 					tipRate = parseFloat($("#tip #tip-rate").val());
 					Gozintas.tip.base = tipRate
 				});
-				$("#tip #tax_tip_rate").on('change', function(){
-					taxTipRate = parseFloat($("#tip #tax_tip_rate").val());
+				$("#tip #tax-tip-rate").on('change', function(){
+					taxTipRate = parseFloat($("#tip #tax-tip-rate").val());
 					Gozintas.tip.tax = taxTipRate
 				});
 
-				$("#tip #next_button_tip").on('click', function(){
+				$("#tip #next-button-tip").on('click', function(){
 					Page.js.receipt.unload();
 					Page.js.receiptIndividual.load();
 					if(Gozintas.isSplitEvenly()){
