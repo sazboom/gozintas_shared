@@ -128,14 +128,14 @@ var Page = {
 				})	
 
 				// Load Wine Extra value into the group from the form field
-				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#wine_amount', function(){
+				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#wine-amount', function(){
 				  groupId = parseInt($(this).parents('.extra-popup').attr('data-group-id'));
 				  group = Gozintas.groups[groupId-1];
 				  group.wineTotal = Gozintas.formatStringToCurrency($(this).val())
 				})
 				
 				// Load Carryout Extra value into the group from the form field
-				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#carry_out_amount', function(){
+				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#carry-out-amount', function(){
 				  groupId = parseInt($(this).parents('.extra-popup').attr('data-group-id'));
 				  group = Gozintas.groups[groupId-1];
 				  group.carryOutTotal = Gozintas.formatStringToCurrency($(this).val())
@@ -306,8 +306,8 @@ var Page = {
 					"pagebeforeshow", function(){
 						$("#extras").live('pageshow click keyup', function(){
 							parentClass = "#extras";
-							wineTotal = parseFloat($(parentClass+" #wine_amount").val()).toFixed(2);
-							carryOut = parseFloat($(parentClass+" #carry_out_amount").val()).toFixed(2);
+							wineTotal = parseFloat($(parentClass+" #wine-amount").val()).toFixed(2);
+							carryOut = parseFloat($(parentClass+" #carry-out-amount").val()).toFixed(2);
 							if(isNaN(carryOut)){
 								carryOut = 0;
 							}
