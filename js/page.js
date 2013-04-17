@@ -1,9 +1,9 @@
 var Page = {
+  pages: ['main','groups', 'groupsb', 'tip', 'receipt', 'receiptb','settings'],
 
-	pages: ['main','groups', 'groupsb', 'tip', 'receipt', 'receiptb'],
-	js : {
+  js: {
 
-		main: {
+    main: {
 			init: function() {
 				
 				tipRate = ich.tipRate();
@@ -14,7 +14,8 @@ var Page = {
 				console.log('Main Page Loaded');
 
 			},
-		load: function() {
+			
+		  load: function() {
 				console.log('Loading....');
 				//Format data entered as a string into Currency
 				$("#main #total-amount-input").on("change keyup", function() {
@@ -87,15 +88,13 @@ var Page = {
 				$("#main #multi-part-tip").on('click', function(){
 					turnPage('#tip');
 				});
-
-
-				
+		
 				Gozintas.toggleMainButtons();
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, // end main
 
 		groups: {
 			init: function() {
@@ -143,14 +142,13 @@ var Page = {
 
 				//Gozintas.handleKeyups(3);
 			},
+			
 			load: function() {
-		},
+		  },
 
 			unload: function(){
-			},
-		},
-
-
+			}
+		}, // end groups
 
 		groupsb: {
 			init: function() {
@@ -165,23 +163,17 @@ var Page = {
 						Gozintas.numPeopleToSplitBillBetween = parseInt($(this).val());
 					});
 				});
-
-
 			},
+			
 			load: function() {
 
 			},
-
-
-
-
-
-
+			
 			unload: function(){
-			},
-		},
+			}
+		}, // end groupsb
 
-		tip: {
+	  tip: {
 			init: function() {
 
 				tipRate = ich.tipRate();
@@ -190,11 +182,9 @@ var Page = {
 				$('#tip').trigger('change');
 
 				Page.js.tip.load();
-
-
-
-
+				
 			},
+			
 			load: function() {
 
 				$("#tip #tip-rate").on('change', function(){
@@ -220,63 +210,64 @@ var Page = {
 					Page.js.receipt.load();
 					turnPage('#receipt');
 				});
-
-
+				
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, // end tip
 
 		receipt: {
 			init: function() {
 			},
+			
 			load: function() {
 				$('#receipt .receipt').trigger('create');
 			},
 
 			unload: function(){
 				$('#receipt .receipt').html('');
-			},
-		},
+			}
+		}, // end receipt
 
 		receiptIndividual: {
 			init: function() {
 			},
+			
 			load: function() {
 				receiptHTML = ich.receiptIndividual(Gozintas.individualData())
 				$('#receipt .receipt').append(receiptHTML);
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, // end receiptIndividual
+		
 		receiptSplitEvenly: {
 			init: function() {
 			},
+			
 			load: function() {
 				receiptHTML = ich.receiptSplitEvenly(Gozintas.individualData())
 				$('#receipt .receipt').append(receiptHTML);
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, // end receiptSplitEvenly
 
 		receiptGroupSplit: {
 			init: function() {
 			},
+			
 			load: function(group) {
 				receiptHTML = ich.receiptGroupSplit(group)
 				$('#receipt .receipt').append(receiptHTML);
 			},
 
 			unload: function(){
-			},
-		},
-
-
-
+			}
+		}, //end receiptGroupSplit
 
 		receiptb: {
 			init: function() {
@@ -292,15 +283,16 @@ var Page = {
 					}
 				);
 			},
+			
 			load: function() {
 
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, //end receiptb
 
-        extras: {
+    extras: {
 			init: function() {
 				$("#extras").live(
 					"pagebeforeshow", function(){
@@ -333,28 +325,41 @@ var Page = {
 				);
 
 			},
+			
 			load: function() {
 
 			},
 
 			unload: function(){
-			},
-		},
+			}
+		}, // end extras
 
-        settings: {
+    settings: {
 			init: function() {
-
+			  
+        tipRate = ich.tipRate();
+        $('#settings #tip-rate').append(tipRate);
+        
+        Page.js.settings.load();
 			},
 
 			load: function() {
+			  $('#settings #save-settings').on('click',function(){
+			    
+			    var tipRate;
+			    tipRate = parseFloat($("#settings #tip-rate").val());
+			    
+			    if(isNaN(tipRate) !== true){
+			      Gozintas.defaultSettings.tipRate = tipRate;
+			    }			    
+			  });
 			},
+			
 			unload: function(){
-			},
-		}
-
-	}
-
-}
+			}
+		} // end settings
+  } // end js
+} //end Page
 
 $(document).ready(function() {
 	Page.pages.forEach(function(element, index, array){

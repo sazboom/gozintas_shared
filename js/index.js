@@ -18,16 +18,14 @@ var app = {
         completeElem.className = completeElem.className.split('hide').join('');
     }
 
-
 };
 
-function addGroup(){
+function addGroup() {
 	id = Gozintas.addGroup();
 	addGroupElement(id);
 }
 
-function addGroupElement(id)
-{
+function addGroupElement(id) {
     $(ich.groupTopContainer({id:id})).appendTo('.groups');
     group = ich.groupContainer({id:id});
 	$("#group-"+(id)).append(group);
@@ -36,14 +34,12 @@ function addGroupElement(id)
 	$("#topgroup-"+(id)+"-container").trigger('create');
 }
 
-function clearGroupElements()
-{
+function clearGroupElements() {
 
 	$(".group-container").remove()
 }
 
-function removeGroup()
-{
+function removeGroup() {
     group_size = Gozintas.numOfGroups();
 	if(group_size > 1)
     { 
@@ -54,13 +50,12 @@ function removeGroup()
     }
 }
 
-function addExtra()
-{
+function addExtra() {
 
 }
 
 
-function returnHome(changepage){
+function returnHome(changepage) {
     Gozintas.reset();
     Gozintas.toggleMainButtons();
     $(':input').val('');
@@ -69,7 +64,7 @@ function returnHome(changepage){
     }
 }
 
-function turnPage(loc){
+function turnPage(loc) {
 	setTimeout(function(){
 		document.location = loc;
 	},500);

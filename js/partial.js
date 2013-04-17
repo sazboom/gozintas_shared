@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/* $(document).ready(function() {
 	loadPartials("*[data-routing]",true);
 });
 
@@ -77,3 +77,4 @@ function unloadPageJS(page){
 }
 
 
+*/

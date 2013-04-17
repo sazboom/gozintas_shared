@@ -36,9 +36,11 @@ var Gozintas = {
 			peopleInParty: this.calculateTotalPeople(),
 			totalTipSplitEvenly: this.formatFloatIntoCurrency(this.calculateTotalTipSplitEvenly()),
 			totalToPaySplitEvenly: this.formatFloatIntoCurrency(this.calculateTotalToPaySplitEvenly()),
-
-
 		}
+	},
+	
+	defaultSettings: {
+	  tipRate: 0.15
 	},
 
 	billModifier : { /* If any of the groups have wine, reductions, or extras, these will be set to true. If none of them have wine, reductions, or extras, these will be set to false. Also defined on a per group basis above in the groups variable*/
