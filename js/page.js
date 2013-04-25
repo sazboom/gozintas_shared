@@ -208,25 +208,19 @@ var Page = {
 					tipRate = parseFloat($("#tip #tip-rate").val());
 					Gozintas.tip.base = tipRate
 				  
-				  alert(Gozintas.isSplitEvenly());
-				  alert(Gozintas.billPath);
-				  alert(Gozintas.groups.length);
-				  
 					Page.js.receipt.unload();
 					Page.js.receiptIndividual.load();
 					if(Gozintas.isSplitEvenly()){
 						Page.js.receiptSplitEvenly.load();
-						alert(Gozintas.groups.length);
 					}
 					else if(Gozintas.isGroupSplit()){
 						Gozintas.groups.forEach(function(group,index,array){
 							Page.js.receiptGroupSplit.load(group);
 						});
 					}
-					alert(Gozintas.groups.length);
 					Page.js.receipt.load();
-					alert(Gozintas.groups.length);
-					turnPage('#receipt');
+				  
+				  turnPage('#receipt');
 				});
 				
 			},
