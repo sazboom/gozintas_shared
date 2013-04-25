@@ -9,6 +9,8 @@ var Page = {
 				tipRate = ich.tipRate();
 				$('#main .tip-rate-class').append(tipRate);
 				$('#main .tip-rate-class').trigger('change');
+				console.log('Updating from local settings');
+				Settings.updateUISettings("main");
 				console.log('Loading Main Page');
 				Page.js.main.load();
 				console.log('Main Page Loaded');
@@ -78,7 +80,7 @@ var Page = {
 				});
 
 				$("#main #flat-rate-tip").on('click', function(){
-					Gozintas.tip.base = 0.15  //FIX needs to be from settings
+					Settings.tipRate === "NA" ? Gozintas.tip.base = 0.15 : Gozintas.tip.base = parseFloat(Settings.tipRate); //FIX needs to be from settings
 					Page.js.receipt.unload(); 
 					Page.js.receiptIndividual.load();
 					Page.js.receipt.load();
@@ -91,7 +93,7 @@ var Page = {
 		
 				Gozintas.toggleMainButtons();
 			},
-
+		
 			unload: function(){
 			}
 		}, // end main
@@ -145,7 +147,7 @@ var Page = {
 			
 			load: function() {
 		  },
-
+    
 			unload: function(){
 			}
 		}, // end groups
@@ -168,7 +170,7 @@ var Page = {
 			load: function() {
 
 			},
-			
+   
 			unload: function(){
 			}
 		}, // end groupsb
@@ -186,7 +188,9 @@ var Page = {
 			},
 			
 			load: function() {
-
+        /*
+        Removed by Scott so that values were always update in Gozintas after "next" was clicked
+        
 				$("#tip #tip-rate").on('change', function(){
 					tipRate = parseFloat($("#tip #tip-rate").val());
 					Gozintas.tip.base = tipRate
@@ -195,24 +199,38 @@ var Page = {
 					taxTipRate = parseFloat($("#tip #tax-tip-rate").val());
 					Gozintas.tip.tax = taxTipRate
 				});
+				*/
 
 				$("#tip #next-button-tip").on('click', function(){
+				  taxTipRate = parseFloat($("#tip #tax-tip-rate").val());
+					Gozintas.tip.tax = taxTipRate
+					
+					tipRate = parseFloat($("#tip #tip-rate").val());
+					Gozintas.tip.base = tipRate
+				  
+				  alert(Gozintas.isSplitEvenly());
+				  alert(Gozintas.billPath);
+				  alert(Gozintas.groups.length);
+				  
 					Page.js.receipt.unload();
 					Page.js.receiptIndividual.load();
 					if(Gozintas.isSplitEvenly()){
 						Page.js.receiptSplitEvenly.load();
+						alert(Gozintas.groups.length);
 					}
 					else if(Gozintas.isGroupSplit()){
 						Gozintas.groups.forEach(function(group,index,array){
 							Page.js.receiptGroupSplit.load(group);
 						});
 					}
+					alert(Gozintas.groups.length);
 					Page.js.receipt.load();
+					alert(Gozintas.groups.length);
 					turnPage('#receipt');
 				});
 				
 			},
-
+      
 			unload: function(){
 			}
 		}, // end tip
@@ -224,7 +242,7 @@ var Page = {
 			load: function() {
 				$('#receipt .receipt').trigger('create');
 			},
-
+      
 			unload: function(){
 				$('#receipt .receipt').html('');
 			}
@@ -238,7 +256,7 @@ var Page = {
 				receiptHTML = ich.receiptIndividual(Gozintas.individualData())
 				$('#receipt .receipt').append(receiptHTML);
 			},
-
+      
 			unload: function(){
 			}
 		}, // end receiptIndividual
@@ -264,7 +282,7 @@ var Page = {
 				receiptHTML = ich.receiptGroupSplit(group)
 				$('#receipt .receipt').append(receiptHTML);
 			},
-
+      
 			unload: function(){
 			}
 		}, //end receiptGroupSplit
@@ -287,7 +305,7 @@ var Page = {
 			load: function() {
 
 			},
-
+      
 			unload: function(){
 			}
 		}, //end receiptb
@@ -329,7 +347,7 @@ var Page = {
 			load: function() {
 
 			},
-
+      
 			unload: function(){
 			}
 		}, // end extras
@@ -338,7 +356,7 @@ var Page = {
 			init: function() {
 			  
         tipRate = ich.tipRate();
-        $('#settings #tip-rate').append(tipRate);
+        $('#settings #tip-rate, #settings #tax-tip-rate, #settings #extras-tip-rate').append(tipRate);
         
         Page.js.settings.load();
 			},
@@ -347,14 +365,24 @@ var Page = {
 			  $('#settings #save-settings').on('click',function(){
 			    
 			    var tipRate;
-			    tipRate = parseFloat($("#settings #tip-rate").val());
+			    var taxTipRate;
+			    var extrasTipRate;
 			    
-			    if(isNaN(tipRate) !== true){
-			      Gozintas.defaultSettings.tipRate = tipRate;
-			    }			    
+			    tipRate = $("#settings #tip-rate").val();
+			    taxTipRate = $("#settings #tax-tip-rate").val();
+			    extrasTipRate = $("#settings #extras-tip-rate").val();
+			    
+			    window.localStorage.setItem("tipRate",tipRate);
+			    Settings.tipRate = tipRate;
+			    
+			    window.localStorage.setItem("taxTipRate",taxTipRate);
+			    Settings.taxTipRate = taxTipRate;
+			    
+			    window.localStorage.setItem("extrasTipRate",extrasTipRate);
+			    Settings.extrasTipRate = extrasTipRate;
 			  });
 			},
-			
+      
 			unload: function(){
 			}
 		} // end settings
@@ -364,6 +392,12 @@ var Page = {
 $(document).ready(function() {
 	Page.pages.forEach(function(element, index, array){
 		Page.js[element].init()
+	});
+
+	$('div[data-role="page"]').each(function(index){
+    $(this).on('pagebeforehide',function(event,ui) {
+      Settings.updateUISettings(ui.nextPage.attr('id'));
+    });
 	});
 });
 

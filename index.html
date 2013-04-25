@@ -12,13 +12,14 @@
     <script type="text/javascript" src="cordova-2.2.0.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.2.0.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/ICanHaz.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
     <script type="text/javascript" src="js/gozintas.js"></script>
+    <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/page.js"></script>
     <script type="text/javascript">
       app.initialize();
-      </script>
+    </script>
     </head>
     <body>
       <div id="container">
@@ -232,22 +233,26 @@
           </div>-->
           <div class = "background-page">
             <div class = "inner-page">
-              <div class = "base-tip">
-                <div class="div-select-gaz">
-                  <label for="tip-rate" class="label-gaz tip-rate-class">Base Rate Tip</label><br/>
-                  <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
-                  </select> 
+              <div class="ui-grid-a">
+                <div class="ui-block-a">
+                  <div class = "base-tip">
+                    <div class="div-select-gaz">
+                      <label for="tip-rate" class="label-gaz tip-rate-class">Base Rate Tip</label><br/>
+                      <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
+                      </select> 
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-block-b">
+                  <div id="tax-tip"> <!-- hiding this for now -->
+                    <div class="div-select-gaz">
+                      <label for="tax-tip-rate" class="label-gaz tip-rate-class">Tax Tip Rate (Optional)</label><br/>
+                      <select class="select-gaz tip-rate-class" id="tax-tip-rate" name="tax-tip-rate" data-inline="true" data-routing="tip-rate.html">
+                      </select> 
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div id="tax-tip"> <!-- hiding this for now -->
-                <div class="div-select-gaz">
-                  <label for="tax-tip-rate" class="label-gaz tip-rate-class">Tax Tip Rate (Optional)</label><br/>
-                  <select class="select-gaz tip-rate-class" id="tax-tip-rate" name="tax-tip-rate" data-inline="true" data-routing="tip-rate.html">
-                  </select> 
-                </div>
-              </div>
-
               <a href="#" id ="next-button-tip" data-role="button">Next</a>
             </div>
           </div>
@@ -304,7 +309,6 @@
               <label for="carry-out-amount" class="label-gaz takeout-rate">Carry-out</label>
             </div>  
           </div>
-
         </div>
 
         <div data-role="page" id="settings" data-add-back-btn="true" data-routing="settings.html" data-pagejs="settings" class="page-bg">
@@ -323,7 +327,23 @@
                   <select class="select-gaz tip-rate-class" id="tip-rate" name="tip-rate" data-inline="true" data-routing="tip-rate.html">
                   </select> 
                 </div>
-                <label for="tip-rate" class="label-gaz tip-rate-class">Default Base Rate Tip</label>
+                <label for="tip-rate" class="label-gaz tip-rate-class">Default Base Tip Rate</label>
+              </div>
+              
+              <div class = "question-input">
+                <div class="div-select-gaz">
+                  <select class="select-gaz tip-rate-class" id="tax-tip-rate" name="tax-tip-rate" data-inline="true" data-routing="tip-rate.html">
+                  </select> 
+                </div>
+                <label for="tax-tip-rate" class="label-gaz tip-rate-class">Default Tax Tip Rate</label>
+              </div>
+              
+              <div class = "question-input">
+                <div class="div-select-gaz">
+                  <select class="select-gaz tip-rate-class" id="extras-tip-rate" name="extras-tip-rate" data-inline="true" data-routing="tip-rate.html">
+                  </select> 
+                </div>
+                <label for="extras-tip-rate" class="label-gaz tip-rate-class">Default Extras Tip Rate</label>
               </div>
 
               <div class="buttons">

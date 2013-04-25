@@ -38,10 +38,6 @@ var Gozintas = {
 			totalToPaySplitEvenly: this.formatFloatIntoCurrency(this.calculateTotalToPaySplitEvenly()),
 		}
 	},
-	
-	defaultSettings: {
-	  tipRate: 0.15
-	},
 
 	billModifier : { /* If any of the groups have wine, reductions, or extras, these will be set to true. If none of them have wine, reductions, or extras, these will be set to false. Also defined on a per group basis above in the groups variable*/
 		wine : false,
@@ -190,7 +186,7 @@ var Gozintas = {
 
 
 	isGroupSplit : function(){
-		return (this.isOnSplitBillPath() && this.groups != [])
+		return (this.isOnSplitBillPath() && this.groups.length != 0)
 	},
 
 	isSplitEvenly : function(){
@@ -224,7 +220,7 @@ var Gozintas = {
 			$("#groups .group-container").remove();
 		}
 		delete groups;
-		addGroup();
+		Gozintas.groups = [];
 
 	},
 

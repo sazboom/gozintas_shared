@@ -1,4 +1,6 @@
-/* $(document).ready(function() {
+//FILE DEPRECATED AND NO LONGER INCLUDED
+
+$(document).ready(function() {
 	loadPartials("*[data-routing]",true);
 });
 
@@ -75,6 +77,3 @@ function loadPageJS(e,ui){
 function unloadPageJS(page){
 	Page.js[page]['unload']()
 }
-
-
-*/

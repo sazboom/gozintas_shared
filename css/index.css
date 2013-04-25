@@ -324,19 +324,27 @@
   border-right: 1px solid gray;
 }
 
+#tip .ui-block-a, #tip .ui-block-b {text-align: center}
+/*
+.base-tip, #tax-tip {
+  display: inline-block;
+  width: 49%;
+}
 
-.base-tip, .tax-tip {
-  float: left;
-  width: 50%;
+
+.base-tip .div-select-gaz, #tax-tip  .div-select-gaz{
+  width: 100%;
 }
 
 .tax-tip {
   padding-left: 10px;
 }
+*/
 
 .base-tip {
   border-right: 1px solid gray;
 }
+
 
 .smallFont {
   font-size: 12px;
