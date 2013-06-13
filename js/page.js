@@ -70,9 +70,12 @@ var Page = {
 				$("#main #group-num").on('change', function(){
 					numWantedGroups = parseInt($("#main #group-num").val());
 					Gozintas.clearGroups()
+					clearGroupElements()
 					for(var i = 0; i < numWantedGroups; i++){
 						Gozintas.addGroup();
+					  addGroupElement(i);
 					}
+					
 					Gozintas.splitByGroup();
 					setTimeout(function(){
 						document.location = '#groups';
@@ -100,14 +103,15 @@ var Page = {
 
 		groups: {
 			init: function() {
-
-				//Add Group Elements onto the page for each group
+        //Add Group Elements onto the page for each group
+        /*
 				$("#groups").on('pagebeforecreate', function(){
 					clearGroupElements()
 					for(i=1;i<=Gozintas.numOfGroups();i++){
 						addGroupElement(i);
 					}
 				});
+				*/
 				
 				$("#container").on("change", ".group-container .group-nickname", function(){
 					groupId = parseInt($(this).attr('data-group-id'));
@@ -120,6 +124,15 @@ var Page = {
 					peopleInGroup = parseInt($(this).val());
 					group.peopleInGroup = peopleInGroup;
 				})
+				$("#container").on("click", ".group-container .group-minus", function(){
+				  if(Gozintas.numOfGroups() > 1) {
+				    
+  				  groupId = parseInt($(this).attr('data-group-id'));
+    				Gozintas.groups.splice(groupId-1,1);
+    				alert(Gozintas.groups);
+    				$("#topgroup-" + groupId + "-container").remove()
+  				}
+  			})
 
 				// Load Food Extra value into the group from the form field
 				$("#container").on('pageshow pageaftershow pageafterload keyup change','#groups .extra-popup input#drinks-deserts-etc', function(){

@@ -24,52 +24,6 @@ var app = {
     }
 };
 */
-/*
-$(document).ready(function(){
-   $(' div#main').on({
-     pagebeforeshow: function(event,ui) {
-                       alert('This page is about to be shown: '+ ui.prevPage.attr('id'));        },         
-     pageshow: function(event,ui) {
-                       alert('This page was just hidden: '+ ui.prevPage.attr('id'));        },         
-     pagebeforehide: function(event,ui) {
-                       alert('This page is about to be hidden: '+ ui.nextPage.attr('id'));        },        
-     pagehide: function(event,ui) {
-                       alert('This page was just shown: '+ ui.nextPage.attr('id'));
-                       }        
-  }); 
-});
-
-$(document).ready(function(){
-   $(' div#settings').on({
-     pagebeforeshow: function(event,ui) {
-                       alert('We are leaving: '+ ui.prevPage.attr('id'));        },         
-     pageshow: function(event,ui) {
-                       alert('This page was just hidden: '+ ui.prevPage.attr('id'));        },         
-     pagebeforehide: function(event,ui) {
-                       alert('This page is about to be hidden: '+ ui.nextPage.attr('id'));        },        
-     pagehide: function(event,ui) {
-                       alert('This page was just shown: '+ ui.nextPage.attr('id'));
-                       }        
-  }); 
-});
-
-$(function(){
-  $('div#main').on('pagebeforecreate',function(event) {
-    alert('Main page is about to be created');
-  });
-  $('div#main').on('pagecreate',function(event) {
-    alert('Main page is about to be widgetized');
-  });
-  $('div#main').on('pageinit',function(event) {
-    alert('Main page is about to be initialized');
-  });  
-  $('div#settings').on('pageinit',function(event) {
-      alert('settings page is about to be initialized');
-    });
-});
-*/
-
-
 
 function addGroup() {
 	id = Gozintas.addGroup();
@@ -77,7 +31,7 @@ function addGroup() {
 }
 
 function addGroupElement(id) {
-    $(ich.groupTopContainer({id:id})).appendTo('.groups');
+  $(ich.groupTopContainer({id:id})).appendTo('.groups');
     group = ich.groupContainer({id:id});
 	$("#group-"+(id)).append(group);
 	popup = ich.groupPopup();

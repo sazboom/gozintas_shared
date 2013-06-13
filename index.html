@@ -397,8 +397,8 @@
               <div data-role='collapsible' data-content-theme='c' data-theme='a' id ='group-{{id}}' class='group-{{id}} visible' data-routing='group.html' style = 'width: 77%; float: left'>
                 <h3>Group {{id}}</h3>
 			        </div>
-              <a href='#' data-transition='pop' data-role='button' data-inline='true' style='float: left; width: 20%;' data-icon='plus' data-theme='b' data-rel='popup' onclick='$("#extra-popup-{{id}}").popup("open")'>
-			        </a>
+              <a href='#' class="group-minus" data-group-id='{{id}}' data data-transition='pop' data-role='button' data-inline='true' style='float: left; width: 20%;' data-icon='minus' data-theme='b' data-rel='popup'>
+			        </a> <!-- Action was formerly $("#topgroup-{{id}}-container").popup("open") -->
               <div data-role='popup' class='extra-popup' id='extra-popup-{{id}}' data-routing='extras.html' data-group-id='{{id}}'>
 			        </div>
 		        </div>
